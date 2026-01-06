@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biografi Diri Mewah - Layout Samping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0f7fa;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: rgba(10, 30, 50, 0.9);
+      border: 3px solid #0288d1;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #0288d1aa;
+      padding: 40px 50px;
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    /* Kiri: Foto + Biodata */
+    .left {
+      flex: 1 1 320px;
+      max-width: 350px;
+      text-align: center;
+      border-right: 2px solid #0288d1;
+      padding-right: 30px;
+    }
+
+    .profile img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #03a9f4;
+      box-shadow: 0 0 15px #03a9f4aa;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #03a9f4cc;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #03a9f4;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #03a9f4bb;
+    }
+
+    .bio-desc {
+      font-size: 17px;
+      color: #b3e5fc;
+      margin-bottom: 25px;
+    }
+
+    table.biodata-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #b3e5fc;
+      font-size: 16px;
+    }
+
+    table.biodata-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #0288d1;
+      text-align: left;
+    }
+
+    table.biodata-table td:first-child {
+      font-weight: 700;
+      color: #03a9f4;
+      width: 40%;
+    }
+
+    /* Kanan: Tentang Saya, Prestasi, Kontak, Fakta */
+    .right {
+      flex: 2 1 600px;
+      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #03a9f4;
+      margin-bottom: 18px;
+      text-shadow: 0 0 6px #03a9f4bb;
+    }
+
+    /* Tentang Saya */
+    .about-me p {
+      font-size: 17px;
+      color: #b3e5fc;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* Prestasi table */
+    table.prestasi-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #b3e5fc;
+      font-size: 16px;
+    }
+
+    table.prestasi-table th, table.prestasi-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #0288d1;
+      text-align: left;
+    }
+
+    table.prestasi-table th {
+      background-color: #0288d1;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    /* Kontak */
+    .contact p {
+      font-size: 17px;
+      color: #b3e5fc;
+      margin-bottom: 8px;
+    }
+
+    /* Fakta Menarik */
+    ul.fakta-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 17px;
+      color: #b3e5fc;
+    }
+
+    ul.fakta-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    ul.fakta-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #03a9f4;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* Link button */
+    .links {
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .links a {
+      text-decoration: none;
+      background: #03a9f4;
+      color: #001f3f;
+      padding: 12px 30px;
+      border-radius: 30px;
+      margin: 0 12px;
+      font-weight: 700;
+      box-shadow: 0 0 10px #03a9f4aa;
+      transition: background 0.3s, color 0.3s;
+      display: inline-block;
+    }
+
+    .links a:hover {
+      background: #0277bd;
+      color: #e0f7fa;
+      box-shadow: 0 0 18px #0277bdcc;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        padding: 30px 20px;
+      }
+      .left {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #0288d1;
+        padding-right: 0;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+      }
+      .right {
+        max-width: 100%;
+      }
+      .profile img {
+        width: 150px;
+        height: 150px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="left">
+      <div class="profile">
+        <img src="iyan copiyan.jpg" alt="Foto Diri" />
+        <h1>Intan Rasma Deri</h1>
+        <p class="bio-desc">Smart | Hebat | Bermartabat</p>
+        <div class="links">
+          <a href="https://www.instagram.com/libr4sma?igsh=MWxmd3g1ZjNndGtzdw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://drive.google.com/drive/folders/1cVOKogk4pwIpQyvfyl6zBwDrAWbinCKe" target="_blank" rel="noopener noreferrer">Google Drive</a>
+        </div>
+      </div>
+
+      <div class="section biodata">
+        <h2>Biodata Diri</h2>
+        <table class="biodata-table">
+          <tr>
+            <td>Nama Lengkap</td>
+            <td>Intan Rasma Deri</td>
+          </tr>
+          <tr>
+            <td>Tempat, Tanggal Lahir</td>
+            <td>Gunung Batin Baru, 29 September 2008</td>
+          </tr>
+          <tr>
+            <td>Jenis Kelamin</td>
+            <td>Perempuan</td>
+          </tr>
+          <tr>
+            <td>Alamat</td>
+            <td>RT 05, Perumahan 6, PT. Gunung Madu Plantations, Lampung Tengah, Lampunng</td>
+          </tr>
+          <tr>
+            <td>Agama</td>
+            <td>Islam</td>
+          </tr>
+          <tr>
+            <td>Kewarganegaraan</td>
+            <td>Indonesia</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>Pelajar</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="right">
+
+      <div class="section about-me">
+        <h2>Tentang Saya</h2>
+        <p>
+          Halo! Saya Intan Rasma Deri, seorang pelajar SMA yang sangat menyukai dunia teknologi dan kreativitas. Saya selalu bersemangat untuk belajar hal-hal baru dan mengembangkan kemampuan saya, terutama di bidang desain digital dan pemrograman sederhana. Selain itu, saya juga aktif mengikuti berbagai lomba dan kegiatan ekstrakurikuler di sekolah.
+        </p>
+      </div>
+
+      <div class="section prestasi">
+        <h2>Prestasi</h2>
+        <table class="prestasi-table">
+          <tr>
+            <th>Tahun</th>
+            <th>Prestasi</th>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>Juara 4 OSN-K Informatika</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>Juara 6 OSN-K Informatika</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section contact">
+        <h2>Kontak</h2>
+        <p>📧 Email: intanrasma09@gmail.com</p>
+        <p>📞 Telepon: 0823-7612-3149</p>
+      </div>
+
+      <div class="section facts">
+        <h2>Fakta Menarik</h2>
+        <ul class="fakta-list">
+          <li>Menyukai makanan pedas</li>
+          <li>Hobi menonton k-drama</li>
+          <li>Tidur harus mendengarkan musik</li>
+          <li>Bisa mendengarkan musik sambil belajar dengan fokus tinggi</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
